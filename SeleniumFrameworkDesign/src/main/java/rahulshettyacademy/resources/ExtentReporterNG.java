@@ -7,7 +7,7 @@ public class ExtentReporterNG
 {
 
 	
-	public void getReportObject() {
+	public static ExtentReports getReportObject() {
 		
 		//getReportObject method creates test entry and gives object 
 		
@@ -21,6 +21,7 @@ public class ExtentReporterNG
 	 	ExtentReports extent = new ExtentReports();
 	 	extent.attachReporter(reporter);
 	 	extent.setSystemInfo("Tester", "Ravi");
+		return extent;
 	 	
 	}
 }

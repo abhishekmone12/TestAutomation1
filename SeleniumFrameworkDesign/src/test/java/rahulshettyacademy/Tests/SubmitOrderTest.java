@@ -62,13 +62,13 @@ public class SubmitOrderTest extends BaseTest
 	 
 	 /* HashMap<String,String> map = new HashMap <String,String>();
 	 
-		map.put("email", "abhishekmone.12@gmail.com");
-		 map.put("password", "Auto@123!");
+		map.put("email", "xxxxx@gmail.com");
+		 map.put("password", "xxxxx");
 		 map.put("product", "IPHONE 13 PRO");
 
 		 HashMap<String,String> map1 = new HashMap <String,String>();
 
-		 map1.put("email", "anshika@gmail.com");
+		 map1.put("email", "xxxxx@gmail.com");
 		 map1.put("password", "IamKing@000");
 		 map.put("product", "qwerty"); */
 		 		
