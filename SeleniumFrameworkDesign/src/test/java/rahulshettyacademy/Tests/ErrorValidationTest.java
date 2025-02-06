@@ -10,17 +10,18 @@ import org.testng.annotations.Test;
 import rahulshettyacademy.PageObjects.CartPage;
 import rahulshettyacademy.PageObjects.ProductCatalogue;
 import rahulshettyacademy.TestComponents.BaseTest;
+import rahulshettyacademy.TestComponents.Retry;
 public class ErrorValidationTest extends BaseTest
 {
 
-	@Test(groups = {"ErrorHandling"})
+	@Test(groups = {"ErrorHandling"},retryAnalyzer = Retry.class)
 	public void loginErrorValdation() throws InterruptedException, IOException
 	{
 		
 	    
 		landingPage.loginApplication("abhishekmone.12@gmail.com", "3573kfk");
 		Assert.assertEquals("password.",landingPage.getErrorMessage() );
-		;
+		
 		
 	}
 	

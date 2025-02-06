@@ -15,19 +15,24 @@ import rahulshettyacademy.resources.ExtentReporterNG;
 
 public class Listeners extends BaseTest implements ITestListener
 {
-	ExtentReports extent = ExtentReporterNG.getReportObject();
 	ExtentTest test;
+	ExtentReports extent = ExtentReporterNG.getReportObject();
+	ThreadLocal <ExtentTest>  extentTest = new ThreadLocal <ExtentTest>(); //thread safe
+	
+	
 	@Override
 	public void onTestStart(ITestResult result) {
 		  test = extent.createTest(result.getMethod().getMethodName());
-		
+		  extentTest.set(test);   // unique thread id(Error ->validation -->test) 
+	//	  It sets test object to threadLocal class and maps both test object and thread id
+
  
 	}
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
 		
-		test.log(Status.PASS, "Test Passed");
+		extentTest.get().log(Status.PASS, "Test Passed");
 	}
 	
 	
@@ -35,7 +40,7 @@ public class Listeners extends BaseTest implements ITestListener
 	@Override
 	public void onTestFailure(ITestResult result) {
 		// TODO Auto-generated method stub
-		test.fail(result.getThrowable());
+	    extentTest.get().fail(result.getThrowable());
 		
 		
 		try {
