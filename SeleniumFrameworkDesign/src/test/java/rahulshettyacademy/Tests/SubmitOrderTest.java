@@ -33,8 +33,7 @@ public class SubmitOrderTest extends BaseTest
         Assert.assertTrue(match);
         CheckOutPage checkoutPage = cartPage.goToCheckOutPage();
         checkoutPage.selectCountry("india");
-        checkoutPage.submitOrder();
-        ConfirmationPage confirmationPage = new ConfirmationPage(driver);
+        ConfirmationPage confirmationPage =  checkoutPage.submitOrder();
         String confirmMessage = confirmationPage.verifyConfirmationMessage();
 		Assert.assertTrue(confirmMessage.equalsIgnoreCase("THANKYOU FOR THE ORDER."));
 	

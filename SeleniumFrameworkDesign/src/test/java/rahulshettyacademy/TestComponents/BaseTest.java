@@ -14,6 +14,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
@@ -36,11 +37,18 @@ public class BaseTest
 		Properties prop = new Properties();
 		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"/src/main/java/rahulshettyacademy/resources/GlobalData.Properties");
 		prop.load(fis);
-		String browserName = prop.getProperty("browser");
 		
-		if(browserName.equalsIgnoreCase("chrome")) {
+		String browserName = System.getProperty("browser")!= null ? System.getProperty("browser") : prop.getProperty("browser");
+		// String browserName = prop.getProperty("browser");
+		  
+		if(browserName.contains("chrome")) {
 			
-	         driver = new ChromeDriver();
+			ChromeOptions options = new ChromeOptions();
+			
+			if(browserName.contains("headless"))
+			options.addArguments("headless");
+			
+	         driver = new ChromeDriver(options);
 			
 			
 		}else if (browserName.equalsIgnoreCase("firefox")){
@@ -99,3 +107,4 @@ List<HashMap<String, String>> data = mapper.readValue(jsonContent, new TypeRefer
 	}
 	
 }
+
